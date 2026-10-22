@@ -85,13 +85,13 @@ router.post("/generate-Verification-Token", Auth, async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-          user: "anmoltutejaserver@gmail.com",
+          user: config.NODEMAIL_EMAIL,
           pass: config.NODEMAIL_APP_PASSWORD,
         },
       });
   
       const mailOptions = {
-        from: '"Collabify" <anmoltutejaserver@gmail.com>',
+        from: `"Collabify" <${config.NODEMAIL_EMAIL}>`,
         to: user.email,
         subject: 'Email Verification Link',
         html: `
@@ -164,13 +164,13 @@ router.post('/resetPasswordToken', async (req, res) => {
             port: 465,
             secure: true,
             auth: {
-                user: "anmoltutejaserver@gmail.com",
+                user: config.NODEMAIL_EMAIL,
                 pass: config.NODEMAIL_APP_PASSWORD,
             },
         });
 
         let mailOptions = {
-            from: '"Collabify" <anmoltutejaserver@gmail.com>',
+            from: `"Collabify" <${config.NODEMAIL_EMAIL}>`,
             to: email,
             subject: 'Password Reset Link',
             text: `You requested to reset your password. Click the link below to proceed. This link is valid for 5 minutes:\n\n${config.FRONTEND_URL}/update-password/${token}`,

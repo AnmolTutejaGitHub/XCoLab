@@ -58,7 +58,7 @@ const UserSchema = new mongoose.Schema({
             return /^\d{10}$/.test(v.toString());
           }
         },
-        default : 111111111,
+        //default : 111111111,
     },
     bio : {
         type : String,
